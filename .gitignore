@@ -1,0 +1,11 @@
+# Service 1
+service1/node_modules
+service1/.env
+
+# Service 2
+service2/node_modules
+service2/.env
+
+# Service 3
+service3/node_modules
+service3/.env
