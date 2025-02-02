@@ -16,5 +16,5 @@ app.use(cors());
 app.use('service2', router);
 
 app.listen(port, () => {
-    console.log(`Server listen on PORT: ${port}`);
+    console.log(`Server2 listen on PORT: ${port}`);
 });
