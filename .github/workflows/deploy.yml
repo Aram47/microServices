@@ -34,6 +34,18 @@ jobs:
           docker-compose -f docker-compose.yml build
           docker-compose -f docker-compose.yml push
 
+      - name: Save state and set output
+        run: |
+          # Сохраняем состояние в файл GITHUB_STATE
+          echo "build_status=success" >> $GITHUB_STATE
+          
+          # Устанавливаем вывод для следующего шага
+          echo "docker_image=service1_image" >> $GITHUB_OUTPUT
+
       - name: Deploy to Kubernetes
         run: |
+          # Чтение состояния и вывода из файлов
+          echo "Build status: ${{ steps.save_state_and_set_output.outputs.build_status }}"
+          echo "Docker image: ${{ steps.save_state_and_set_output.outputs.docker_image }}"
+          
           kubectl apply -f k8s/
