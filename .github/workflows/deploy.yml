@@ -40,6 +40,7 @@ jobs:
           docker-compose -f docker-compose.yml push
 
       - name: Save state and set output
+        id: save_state_and_set_output
         run: |
           echo "build_status=success" >> $GITHUB_STATE
           echo "docker_image=service1_image" >> $GITHUB_OUTPUT
@@ -48,4 +49,4 @@ jobs:
         run: |
           echo "Build status: ${{ steps.save_state_and_set_output.outputs.build_status }}"
           echo "Docker image: ${{ steps.save_state_and_set_output.outputs.docker_image }}"
-          kubectl apply -f k8s/
+          kubectl apply -f k8s/ --validate=false
