@@ -31,8 +31,8 @@ jobs:
 
       - name: Build and push Docker images
         run: |
-          docker-compose -f docker-compose.yml build
-          docker-compose -f docker-compose.yml push
+          sudo docker-compose -f docker-compose.yml build
+          sudo docker-compose -f docker-compose.yml push
 
       - name: Save state and set output
         run: |
